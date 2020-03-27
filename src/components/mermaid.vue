@@ -1,11 +1,6 @@
 <template>
   <div>
-      <vue-mermaid
-    :nodes='data'
-    type='graph TB'
-    @nodeClick="editNode"
-  ></vue-mermaid>
-  <button @click="clicktest">button</button>
+    <vue-mermaid v-bind:nodes='data' type='graph TB' @nodeClick='editNode' v-bind:config='mermaid'></vue-mermaid>
   </div>
 </template>
 
@@ -23,7 +18,12 @@ export default {
         { id: '7', text: 'G', next: ['8', '9'] },
         { id: '8', text: 'H' },
         { id: '9', text: 'I' }
-      ]
+      ],
+      mermaid: {
+        theme: 'default',
+        startOnLoad: !1,
+        securityLevel: 'loose'
+      }
     }
   },
   methods: {
