@@ -10,14 +10,14 @@ module.exports = {
   },
   extends: [
     'plugin:vue/essential', 
-    'standard'
+    'standard',
+    'plugin:prettier/recommended',
   ],
   plugins: [
     'vue'
   ],
   rules: {
     'generator-star-spacing': 'off',
-      'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   },
-  //extends: ['plugin:prettier/recommended'],
 }
