@@ -42,7 +42,11 @@ export default {
         },
         button() {
             let length = this.data.length;
-            this.data.push({ id: length + 1, text: "New!", editable: true });
+            this.data.push({
+                id: length + 1,
+                text: this.InputTest,
+                editable: true
+            });
         }
     }
 };
