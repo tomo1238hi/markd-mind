@@ -23,7 +23,7 @@
 import FolderList from "./FolderList.vue";
 import FilterableDropdown from "./FilterableDropdown.vue";
 import MarkdownEditor from "./MarkdownEditor.vue";
-import Mermaid from "./mermaid";
+import Mermaid from "./mermaid/mermaid.vue";
 export default {
     name: "Index",
     components: { FolderList, FilterableDropdown, MarkdownEditor, Mermaid }

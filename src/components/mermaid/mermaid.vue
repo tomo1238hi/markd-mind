@@ -1,12 +1,19 @@
 <template>
     <div>
+        <div>
+            <div id="overlay" v-show="showContent">
+                <div id="content">
+                    <input v-model="InputTest" type="text" />
+                    <button v-on:click="closeModal">Close</button>
+                </div>
+            </div>
+        </div>
         <vue-mermaid
             v-bind:nodes="data"
             type="graph TB"
             @nodeClick="editNode"
             v-bind:config="mermaid"
         ></vue-mermaid>
-        <input v-model="InputTest" type="text" />
         <button @click="button">new node</button>
     </div>
 </template>
@@ -32,12 +39,13 @@ export default {
                 startOnLoad: !1,
                 securityLevel: "loose"
             },
-            InputTest: ""
+            InputTest: "",
+            showContent: false
         };
     },
     methods: {
         editNode(nodeId) {
-            console.log(nodeId);
+            openModal();
             this.data[nodeId - 1].text = this.InputTest;
         },
         button() {
@@ -47,7 +55,35 @@ export default {
                 text: this.InputTest,
                 editable: true
             });
+        },
+        openModal() {
+            this.showContent = true;
+        },
+        closeModal() {
+            this.showContent = false;
         }
     }
 };
 </script>
+
+<style>
+#overlay {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#content {
+    z-index: 2;
+    width: 50%;
+    padding: 1em;
+    background: #fff;
+}
+</style>
